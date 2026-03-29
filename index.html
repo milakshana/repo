@@ -1,48 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Simple Calculator</title>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
     <style>
+        /* General body */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f2f2f2;
-            font-family: Arial;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
 
+        /* Calculator container */
         .calculator {
-            background: #222;
+            background: #1e1e1e;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
+        /* Display */
         #display {
             width: 100%;
-            height: 50px;
-            font-size: 20px;
-            margin-bottom: 10px;
+            height: 60px;
+            font-size: 2rem;
             text-align: right;
-            padding: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: none;
         }
 
+        /* Buttons grid */
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 70px);
+            grid-gap: 10px;
+        }
+
+        /* Buttons style */
         .buttons button {
-            width: 50px;
-            height: 50px;
-            margin: 5px;
-            font-size: 18px;
+            height: 60px;
+            font-size: 1.5rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
+            background: #333;
+            color: white;
+            transition: 0.2s;
         }
 
         .buttons button:hover {
-            background-color: #ddd;
+            background: #555;
+        }
+
+        /* Special buttons */
+        .buttons .operator {
+            background: #ff9500;
+            color: white;
+        }
+
+        .buttons .operator:hover {
+            background: #ffa733;
+        }
+
+        .buttons .equal {
+            background: #0a84ff;
+            grid-column: span 1;
+        }
+
+        .buttons .equal:hover {
+            background: #3399ff;
+        }
+
+        .buttons .zero {
+            grid-column: span 2;
         }
     </style>
 </head>
-
 <body>
 
 <div class="calculator">
@@ -51,25 +89,25 @@
     <div class="buttons">
         <button onclick="clearDisplay()">C</button>
         <button onclick="deleteLast()">←</button>
-        <button onclick="append('/')">/</button>
-        <button onclick="append('*')">*</button><br>
+        <button class="operator" onclick="append('/')">/</button>
+        <button class="operator" onclick="append('*')">*</button>
 
         <button onclick="append('7')">7</button>
         <button onclick="append('8')">8</button>
         <button onclick="append('9')">9</button>
-        <button onclick="append('-')">-</button><br>
+        <button class="operator" onclick="append('-')">-</button>
 
         <button onclick="append('4')">4</button>
         <button onclick="append('5')">5</button>
         <button onclick="append('6')">6</button>
-        <button onclick="append('+')">+</button><br>
+        <button class="operator" onclick="append('+')">+</button>
 
         <button onclick="append('1')">1</button>
         <button onclick="append('2')">2</button>
         <button onclick="append('3')">3</button>
-        <button onclick="calculate()">=</button><br>
+        <button class="equal" onclick="calculate()">=</button>
 
-        <button onclick="append('0')">0</button>
+        <button class="zero" onclick="append('0')">0</button>
         <button onclick="append('.')">.</button>
     </div>
 </div>
